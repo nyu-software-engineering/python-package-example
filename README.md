@@ -42,6 +42,8 @@ Every time you change the code in your package, you will need to rebuild and reu
 
 Repeat as many times as necessary until the package works as expected. Once complete, upload to the real PyPI instead of the TestPyPI repository.
 
+If updating version numbers is tedious, you may consider using [bumpver](https://pypi.org/project/bumpver/#configuration-setup) - a tool that can automate some parts of updating version numbers.
+
 ## How to install and use this package
 
 Try [installing and using your package](https://packaging.python.org/en/latest/tutorials/packaging-projects/#installing-your-newly-uploaded-package) in a separate Python project:
