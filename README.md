@@ -1,6 +1,6 @@
 # Python Package Example
 
-This package was created by generally following the [Packaging Python Projects](https://packaging.python.org/en/latest/tutorials/packaging-projects/) tutorial with some additional build configuration taken from [here](https://godatadriven.com/blog/a-practical-guide-to-setuptools-and-pyproject-toml/).
+This package was created by generally following the [Packaging Python Projects](https://packaging.python.org/en/latest/tutorials/packaging-projects/) with the addition of some [pipenv setup](https://packaging.python.org/en/latest/tutorials/managing-dependencies/).
 
 ## How this package was created
 
@@ -48,7 +48,7 @@ Try [installing and using your package](https://packaging.python.org/en/latest/t
 
 1. Create a `pipenv`-managed virtual environment and install the latest version of your package installed: `pipenv install -i https://test.pypi.org/simple/ examplepackagefb1258==0.0.7`. (Note that if you've previously created a `pipenv` virtual environment in the same directory, you may have to delete the old one first. Find out where it is located with the `pipenv --venv` command.)
 1. Activate the virtual environment: `pipenv shell`.
-1. Create a Python program file that imports your package and uses it, e.g. `from examplepackagefb1258 import wisdom` and then `print(wisdom.get())`.
+1. Create a Python program file that imports your package and uses it, e.g. `from examplepackagefb1258 import wisdom` and then `print(wisdom.get())` (replace `wisdom` and `get()` with any module name and function that exists in your package) .
 1. Run the program: `python3 my_program_filename.py`.
 1. Exit the virtual environment: `exit`.
 
