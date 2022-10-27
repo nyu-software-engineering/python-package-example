@@ -5,7 +5,7 @@ This package was created by generally following the [Packaging Python Projects](
 ## How this package was created
 
 1. [Install pipenv](https://packaging.python.org/en/latest/tutorials/managing-dependencies/#managing-dependencies), [build](https://packaging.python.org/en/latest/tutorials/packaging-projects/#generating-distribution-archives), and [twine](https://packaging.python.org/en/latest/key_projects/#twine) if not already installed.
-2. create directory structure for the package like that below, where `examplepackagefb1258` is replaced with your package's name. This name must be uniquely yours when uploadd to [PyPI](https://pypi.org/). Better to avoid hyphens or underline characters (`-` or `_`) in the package name, as these can create problems when importing. The parent directory name (the repository name) - `python-package-example` in this case - is not relevant to the package name.
+2. create directory structure for the package like that below, where `examplepackagefb1258` is replaced with your package's name. This name must be uniquely yours when uploaded to [PyPI](https://pypi.org/). Better to avoid hyphens or underline characters (`-` or `_`) in the package name, as these can create problems when importing. The parent directory name (the repository name) - `python-package-example` in this case - is not relevant to the package name.
 
 ```
 python-package-example/
