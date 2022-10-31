@@ -59,3 +59,17 @@ Try running the package directly:
 1. Create and activate up the `pipenv` virtual environment as before.
 2. Run the package directly from the command line: `python3 -m examplepackagefb1258`. This should run the code in the `__main__.py` file.
 3. Exit the virtual environment.
+
+## How to run unit tests
+
+Simple example unit tests are included within the `tests` directory. To run these tests...
+
+1. Install pytest in a virtual environment.
+1. Run the tests from the main project directory: `python3 -m pytest`.
+1. Tests should never fail. Any failed tests indicate that the production code is behaving differently from the behavior the tests expect.
+
+## Pro tip
+
+While working on the package code, and verifying it behaves as expected, it can be helpful to install the package in "_editable_" mode so that changes to the package are immediately updated in the virtual environment.
+
+- To do this, run `pipenv install -e .` from the main project directory.
