@@ -42,7 +42,7 @@ class Tests:
     for i in range(100):
       actual = wisdom.get()
       assert isinstance(actual, str), f"Expected get() to return a string. Instead, it returned {actual}"
-      assert len(actual) >= 0, f"Expected get() not to be empty. Instead, it returned a string with {len(actual)} characters"
+      assert len(actual) > 0, f"Expected get() not to be empty. Instead, it returned a string with {len(actual)} characters"
 
   def test_content(self):
     """
