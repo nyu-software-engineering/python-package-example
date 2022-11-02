@@ -75,3 +75,7 @@ Simple example unit tests are included within the `tests` directory. To run thes
 While working on the package code, and verifying it behaves as expected, it can be helpful to install the package in "_editable_" mode so that changes to the package are immediately updated in the virtual environment.
 
 - To do this, run `pipenv install -e .` from the main project directory.
+
+## Continuous integration
+
+This project has a continuous integration workflow that builds and runs unit tests automatically with every _push_ of the code to GitHub.
