@@ -1,3 +1,5 @@
+![Python build & test](https://github.com/nyu-software-engineering/python-package-example/actions/workflows/build.yaml/badge.svg)
+
 # Python Package Example
 
 This package was created by generally following the [Packaging Python Projects](https://packaging.python.org/en/latest/tutorials/packaging-projects/) with the addition of some [pipenv setup](https://packaging.python.org/en/latest/tutorials/managing-dependencies/) to manage virtual environments.
