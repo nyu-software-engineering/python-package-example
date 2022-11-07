@@ -3,7 +3,7 @@ import random
 
 def get():
   '''
-  Returns a pseudo-random line from Lewis Carroll's "The Jabberwocky"
+  Returns a pseudo-random line from Lewis Carroll's "The Jabberwocky".  Empty lines will not be returned.
   '''
   
   text = '''Twas brillig, and the slithy toves
@@ -42,5 +42,6 @@ All mimsy were the borogoves,
 And the mome raths outgrabe.'''
 
   lines = text.split('\n')
+  lines = [line for line in lines if line.strip() != ''] # remove empty lines
   random_line = random.choice(lines)
   return random_line
