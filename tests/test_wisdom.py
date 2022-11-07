@@ -7,6 +7,7 @@ class Tests:
   # Fixtures - these are functions that can do any optional setup or teardown before or after a test function is run.
   #
 
+  @pytest.fixture
   def example_fixture(self):
     '''
     An example of a pytest fixture - a function that can be used for setup and teardown before and after test functions are run.
