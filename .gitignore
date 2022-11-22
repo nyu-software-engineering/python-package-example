@@ -1,3 +1,9 @@
+# ignore any cloned repos
+repos/
+
+# ignore generated reports
+reports/
+
 # mac junk
 .DS_Store
 
@@ -15,6 +21,9 @@ __pycache__/
 
 # C extensions
 *.so
+
+# PyPI authentication
+*pypirc
 
 # Distribution / packaging
 .Python
