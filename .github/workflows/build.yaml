@@ -8,9 +8,9 @@ jobs:
       matrix:
         python-version: ["3.7", "3.9", "3.11"]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
@@ -24,8 +24,9 @@ jobs:
           pipenv install -e .
       - name: Test with pytest
         run: |
+          pipenv shell
           pipenv install pytest
-          pipenv run pytest
+          pipenv run python -m pytest
   deliver:
     needs: [build]
     runs-on: ubuntu-latest
