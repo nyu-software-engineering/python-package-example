@@ -25,10 +25,11 @@ jobs:
       - name: Test with pytest
         run: |
           pipenv shell
+          pipenv --venv
           COLUMNS=80
           echo $COLUMNS
-          pipenv install pytest
-          pipenv run python -m pytest
+          pip install pytest
+          python -m pytest
   deliver:
     needs: [build]
     runs-on: ubuntu-latest
