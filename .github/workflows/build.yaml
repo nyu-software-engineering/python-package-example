@@ -24,6 +24,7 @@ jobs:
           pipenv install -e .
       - name: Test with pytest
         run: |
+          echo COLUMNS=80 > .env
           pipenv shell
           pipenv install pytest
           pipenv run python -m pytest
