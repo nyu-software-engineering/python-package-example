@@ -20,10 +20,10 @@ jobs:
         run: |
           pipenv install pytest
           pipenv shell
-          export COLUMNS=80
+          pipenv run export COLUMNS=80
           pipenv --venv
-          echo $COLUMNS
-          python -m pytest
+          pipenv run echo $COLUMNS
+          pipenv run python -m pytest
   deliver:
     needs: [build]
     runs-on: ubuntu-latest
