@@ -19,10 +19,7 @@ jobs:
       - name: Test with pytest
         run: |
           pipenv install pytest
-          pipenv shell
-          pipenv run export COLUMNS=80
           pipenv --venv
-          pipenv run echo $COLUMNS
           pipenv run python -m pytest
   deliver:
     needs: [build]
