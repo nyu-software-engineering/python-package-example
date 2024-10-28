@@ -26,7 +26,7 @@ jobs:
         run: |
           pipenv shell
           pipenv --venv
-          COLUMNS=80
+          export COLUMNS=80
           echo $COLUMNS
           pip install pytest
           python -m pytest
