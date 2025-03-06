@@ -42,9 +42,11 @@ Every time you change the code in your package, you will need to rebuild and reu
 4. build the package again with `python -m build`
 5. upload the package again with `twine upload -r testpypi dist/*`
 
-Repeat as many times as necessary until the package works as expected. Once complete, upload to the real PyPI instead of the TestPyPI repository.
+Repeat as many times as necessary until the package works as expected.
 
 If updating version numbers is tedious, you may consider using [bumpver](https://pypi.org/project/bumpver/#configuration-setup) - a tool that can automate some parts of updating version numbers.
+
+**Once complete, upload to the real PyPI** instead of the TestPyPI repository.
 
 ## How to install and use this package
 
