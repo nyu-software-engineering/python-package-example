@@ -4,9 +4,12 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-pytest = "*"
-build = "*"
 examplepackagefb1258 = {file = ".", editable = true}
+build = "*"
+pytest = "*"
+coverage = "*"
+pytest-cov = "*"
+twine = "*"
 
 [dev-packages]
 
