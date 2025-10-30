@@ -17,9 +17,43 @@ pipenv run pip install -e .
 If you don’t have **pipenv**, install it first:
 
 ```bash
-pip install pipenva
+pip install pipenv
 ```
 
+---
+💻 Run Locally (for teammates)
+
+If you want to run this project on your own machine (e.g., to test or modify it):
+
+# 1️⃣ Clone the repository
+```bash
+git clone https://github.com/your-username/pyfortunecookie.git
+cd pyfortunecookie
+```
+
+# 2️⃣ Install pipenv and dependencies
+```bash
+pip install pipenv
+pipenv install
+```
+# 3️⃣ Enter the virtual environment
+```bash
+pipenv shell
+```
+# 4️⃣ Run the tests (optional, to verify everything works)
+```bash
+pipenv run pytest
+```bash
+# 5️⃣ Run the package
+```bash
+python3 -m pyfortunecookie
+```
+
+💡 You can exit the environment anytime with:
+
+```
+exit
+```
 ---
 
 ## 🚀 Usage
