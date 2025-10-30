@@ -6,10 +6,10 @@ name = "pypi"
 [packages]
 examplepackagefb1258 = {file = ".", editable = true}
 build = "*"
-pytest = "*"
 coverage = "*"
 pytest-cov = "*"
 twine = "*"
+pytest = "*"
 
 [dev-packages]
 

@@ -3,15 +3,15 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "examplepackagefb1258"
-description = "An example of a package developed with pipenv, built with build using setuptools, uploaded to PyPI using twine, and distributed via pip."
-version = "0.1.2"
+name = "pyfortunecookie"
+description = "A fun fortune cookie generator with lucky number and color"
+version = "0.1.0"
 authors = [
-  { name="Foo Barstein", email="foo.barstein@onepotcooking.com" },
+  { name="SinaL0123", email="sl9608@nyu.edu" },
 ]
 license = { file = "LICENSE" }
 readme = "README.md"
-keywords = ["python", "package", "build", "tutorial"]
+keywords = ["fortune", "fun", "demo"]
 requires-python = ">=3.7"
 classifiers = [
     "Programming Language :: Python :: 3",
@@ -24,9 +24,9 @@ classifiers = [
 dev = ["pytest"]
 
 [project.urls]
-"Homepage" = "https://github.com/nyu-software-engineering/python-package-example"
-"Repository" = "https://github.com/nyu-software-engineering/python-package-example.git"
-"Bug Tracker" = "https://github.com/nyu-software-engineering/python-package-example/issues"
+"Homepage" = "https://github.com/your-username/python-package-practice"
+"Repository" = "https://github.com/your-username/python-package-practice.git"
+"Bug Tracker" = "https://github.com/your-username/python-package-practice/issues"
 
 [project.scripts]
-examplepackagefb1258 = "examplepackagefb1258.__main__:main"
+pyfortunecookie = "pyfortunecookie.__main__:main"
