@@ -1,4 +1,3 @@
-````markdown
 # 🥠 PyFortuneCookie
 
 A fun Python package that generates your **daily fortune cookie** — complete with a lucky number and color!  
@@ -116,7 +115,6 @@ pyfortunecookie/
 ## 👩‍💻 Author
 
 Created by **Sina Liu** (NYU SWE Fall 2025)
-For educational purposes — a small but cheerful project! 🌈
+-- a practice for SWE Project 3! 🌈
 
-```
 
