@@ -29,6 +29,9 @@ jobs:
     needs: [build]
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    permissions:
+      contents: read
+      id-token: write # for PyPI trusted publishing
     steps:
       - uses: actions/checkout@v4
       - name: Install Python
@@ -46,5 +49,4 @@ jobs:
       - name: Publish to PyPI test server
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
-          password: ${{ secrets.TEST_PYPI_API_TOKEN }}
           repository-url: https://test.pypi.org/legacy/
