@@ -68,7 +68,8 @@ Try running the package directly:
 
 Simple example unit tests are included within the `tests` directory. To run these tests...
 
-1. Install `pytest` into the virtual environment, e.g. `pipenv install pytest`
+1. Activate the virtual environment, if not yet done, e.g. `pipenv shell`.
+1. Install all the project's dependencies (including `pytest`) into the virtual environment, e.g. `pipenv install`.
 1. Run the tests from the main project directory: `python3 -m pytest`.
 1. Tests should never fail. Any failed tests indicate that the production code is behaving differently from the behavior the tests expect.
 
@@ -76,7 +77,7 @@ Simple example unit tests are included within the `tests` directory. To run thes
 
 To calculate the "code coverage" of the unit tests, use the `coverage` package.
 
-1. Install `coverage` and `pytest-cov` into the virtual environment, e.g. `pipenv install coverage pytest-cov`
+1. Install `coverage` and `pytest-cov` into the virtual environment if not already present, e.g. `pipenv install coverage pytest-cov`
 1. Run the tests with a coverage report included at the bottom, e.g. `python3 -m pytest --cov=.`
 
 ## Pro tip
