@@ -15,9 +15,9 @@ class Tests:
 
         # place any setup you want to do before any test function that uses this fixture is run
 
-        yield  # at th=e yield point, the test function will run and do its business
+        yield  # at the yield point, the test function will run and do its business
 
-        # place with any teardown you want to do after any test function that uses this fixture has completed
+        # place any teardown you want to do after any test function that uses this fixture has completed
 
     #
     # Test functions
@@ -36,7 +36,7 @@ class Tests:
     def test_get(self):
         """
         Verify get() function and make sure it returns a non-empty string.
-        Note that for example purposes, we have not used the example_fixture in this test functino.
+        Note that for example purposes, we have not used the example_fixture in this test function.
         """
         # since get returns a random string, run it a bunch of times and verify the output
         for i in range(100):

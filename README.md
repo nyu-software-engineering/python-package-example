@@ -4,9 +4,18 @@
 
 This package was created by generally following the [Packaging Python Projects](https://packaging.python.org/en/latest/tutorials/packaging-projects/) with the addition of some [pipenv setup](https://packaging.python.org/en/latest/tutorials/managing-dependencies/) to manage virtual environments.
 
+## Setup after cloning
+
+After cloning this repository, run `pipenv install --dev` from the main project directory. This creates the project's virtual environment and installs everything listed in the `Pipfile`:
+
+- `[packages]` - what the package itself needs to run. Here, that's just the package itself, installed in "_editable_" mode.
+- `[dev-packages]` - tools needed only while developing the package, such as `pytest`, `coverage`, [build](https://packaging.python.org/en/latest/tutorials/packaging-projects/#generating-distribution-archives), and [twine](https://packaging.python.org/en/latest/key_projects/#twine). The `--dev` flag installs these too.
+
+Activating the virtual environment with `pipenv shell` does not install anything. If you skip `pipenv install --dev`, commands like `pytest` may silently run a copy installed elsewhere on your computer and fail with a `ModuleNotFoundError`.
+
 ## How this package was created
 
-1. [Install pipenv](https://packaging.python.org/en/latest/tutorials/managing-dependencies/#managing-dependencies), [build](https://packaging.python.org/en/latest/tutorials/packaging-projects/#generating-distribution-archives), and [twine](https://packaging.python.org/en/latest/key_projects/#twine) if not already installed.
+1. [Install pipenv](https://packaging.python.org/en/latest/tutorials/managing-dependencies/#managing-dependencies) if not already installed, then set up the virtual environment as described above.
 2. create directory structure for the package like that below, where `examplepackagefb1258` is replaced with your package's name. This name must be uniquely yours when uploaded to [PyPI](https://pypi.org/). Better to avoid hyphens or underline characters (`-` or `_`) in the package name, as these can create problems when importing. The parent directory name (the repository name) - `python-package-example` in this case - is not relevant to the package name.
 
 ```
@@ -28,31 +37,34 @@ python-package-example/
 6. Put your own custom module code into `src`/`examplepackagefb1258`/`wisdom.py` or whatever filename(s) you choose for the module(s) that live within your package.
 7. Optionally add a `__main__.py` file to the package directory, if you want to be able to run the package as a script from the command line, e.g. `python -m examplepackagefb1258`.
 8. Build the project by running `python -m build` from the same directory where the `pyproject.toml` file is located.
-9. Verify that the built `.tar` archive has the files you expect your package to have (including any important non-code files) by running the command: `tar --list -f dist/examplepackagefb1258-0.0.7.tar.gz`, where `examplepackagefb1258-0.0.7` is replaced with your own package name and version.
+9. Verify that the built `.tar` archive has the files you expect your package to have (including any important non-code files) by running the command: `tar --list -f dist/examplepackagefb1258-*.tar.gz`, where `examplepackagefb1258` is replaced with your own package name.
 10. Create an account on [TestPyPI](https://test.pypi.org/) where one can upload to a test repository instead of the production PyPI repo.
-11. Create a [new API token](https://test.pypi.org/manage/account/#api-tokens) on TestPyPI with the "Scope" set to “Entire account”. Save a copy of the token somewhere safe.
-12. [Upload your package](examplepackagefb1258) to the TestPyPI repository using twine, e.g. `twine upload -r testpypi dist/*`
-13. twine will output the URL of your package on the PyPI website - load that URL in your web browser to see your packaged published - make sure the `README.md` file looks nice on the web site.
+11. Register your GitHub repository as a [trusted publisher](https://docs.pypi.org/trusted-publishers/) on TestPyPI. This lets the GitHub Actions workflow upload your package without any API token or password stored anywhere.
+    - For a new package that has never been uploaded, go to [Your account → Publishing](https://test.pypi.org/manage/account/publishing/) and add a "pending publisher".
+    - For a package that already exists on TestPyPI, go to the package's **Settings → Publishing** page instead.
+    - In either case, enter your package name, your GitHub username or organization (the "owner"), the repository name, and the workflow filename `build.yaml`. Leave the environment name blank.
+12. Commit and push your code to GitHub. The `deliver` job in [`.github/workflows/build.yaml`](.github/workflows/build.yaml) runs after the tests pass. It builds the package and uploads it to TestPyPI.
+13. Once the workflow succeeds, visit `https://test.pypi.org/project/examplepackagefb1258/` (with your own package name) to see your package published - make sure the `README.md` file looks nice on the web site.
 
-Every time you change the code in your package, you will need to rebuild and reupload it to PyPI. You will need to build from a clean slate and update the version number to achieve this:
+Every time you change the code in your package, you will need to publish a new version of it. PyPI will not accept a version number that has already been uploaded. To publish a new version:
 
-1. delete the autogenerated `dist` directory
-2. delete the autogenerated `src/*.egg-info` directory
-3. update the version number in `pyproject.toml` and anywhere else it is mentioned (do a find/replace)
-4. build the package again with `python -m build`
-5. upload the package again with `twine upload -r testpypi dist/*`
+1. update the version number in `pyproject.toml` and anywhere else it is mentioned (do a find/replace)
+2. commit and push your changes to GitHub
+3. check the "Actions" tab of your GitHub repository to confirm the workflow tested, built and uploaded the new version
 
 Repeat as many times as necessary until the package works as expected.
 
+To check the build on your own computer before pushing, delete the autogenerated `dist` and `src/*.egg-info` directories and run `python -m build`.
+
 If updating version numbers is tedious, you may consider using [bumpver](https://pypi.org/project/bumpver/#configuration-setup) - a tool that can automate some parts of updating version numbers.
 
-**Once complete, upload to the real PyPI** instead of the TestPyPI repository.
+**Once complete, publish to the real PyPI** instead of the TestPyPI repository: register a trusted publisher on [PyPI](https://pypi.org/manage/account/publishing/) the same way, then remove the `repository-url` line from the `deliver` job in `build.yaml`.
 
 ## How to install and use this package
 
 Try [installing and using your package](https://packaging.python.org/en/latest/tutorials/packaging-projects/#installing-your-newly-uploaded-package) in a separate Python project:
 
-1. Create a `pipenv`-managed virtual environment and install the latest version of your package installed: `pipenv install -i https://test.pypi.org/simple/ examplepackagefb1258==0.0.7`. (Note that if you've previously created a `pipenv` virtual environment in the same directory, you may have to delete the old one first. Find out where it is located with the `pipenv --venv` command.)
+1. Create a `pipenv`-managed virtual environment and install the latest version of your package installed: `pipenv install -i https://test.pypi.org/simple/ examplepackagefb1258`. (Note that if you've previously created a `pipenv` virtual environment in the same directory, you may have to delete the old one first. Find out where it is located with the `pipenv --venv` command.)
 1. Activate the virtual environment: `pipenv shell`.
 1. Create a Python program file that imports your package and uses it, e.g. `from examplepackagefb1258 import wisdom` and then `print(wisdom.get())` (replace `wisdom` and `get()` with any module name and function that exists in your package) .
 1. Run the program: `python3 my_program_filename.py`.
@@ -69,7 +81,7 @@ Try running the package directly:
 Simple example unit tests are included within the `tests` directory. To run these tests...
 
 1. Activate the virtual environment, if not yet done, e.g. `pipenv shell`.
-1. Install all the project's dependencies (including `pytest`) into the virtual environment, e.g. `pipenv install`.
+1. Install all the project's dependencies, including dev dependencies like `pytest`, into the virtual environment, e.g. `pipenv install --dev`.
 1. Run the tests from the main project directory: `python3 -m pytest`.
 1. Tests should never fail. Any failed tests indicate that the production code is behaving differently from the behavior the tests expect.
 
@@ -77,8 +89,8 @@ Simple example unit tests are included within the `tests` directory. To run thes
 
 To calculate the "code coverage" of the unit tests, use the `coverage` package.
 
-1. Install `coverage` and `pytest-cov` into the virtual environment if not already present, e.g. `pipenv install coverage pytest-cov`
-1. Run the tests with a coverage report included at the bottom, e.g. `python3 -m pytest --cov=.`
+1. Make sure `coverage` and `pytest-cov` are installed. They are dev dependencies, so `pipenv install --dev` installs them.
+1. Run the tests with a coverage report included at the bottom, e.g. `python3 -m pytest --cov=examplepackagefb1258`. Name the package here, not `.`, so that the report measures the package's code rather than the test files.
 
 ## Pro tip
 
@@ -88,4 +100,4 @@ While working on the package code, and verifying it behaves as expected, it can 
 
 ## Continuous integration
 
-This project has a continuous integration workflow that builds and runs unit tests automatically with every _push_ of the code to GitHub.
+This project has a continuous integration workflow that builds and runs unit tests automatically with every _push_ of the code to GitHub. If the tests pass, a second job builds the package and publishes it to TestPyPI using [trusted publishing](https://docs.pypi.org/trusted-publishers/), so no PyPI credentials are stored in the repository or its GitHub secrets.

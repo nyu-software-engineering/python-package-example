@@ -5,13 +5,13 @@ name = "pypi"
 
 [packages]
 examplepackagefb1258 = {file = ".", editable = true}
+
+[dev-packages]
 build = "*"
 pytest = "*"
 coverage = "*"
 pytest-cov = "*"
 twine = "*"
-
-[dev-packages]
 
 [requires]
 python_version = "3"
